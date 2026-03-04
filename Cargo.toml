@@ -27,7 +27,7 @@ serde = ["dep:serde", "alloc"]
 defmt-03 = ["dep:defmt"]
 
 [target.'cfg(not(feature = "alloc"))'.dependencies]
-heapless = { version = "0.8" }
+heapless = { version = "0.9" }
 
 [target.'cfg(not(feature = "alloc"))'.features]
 defmt-03 = ["dep:defmt", "heapless/defmt-03"]
@@ -49,6 +49,9 @@ harness = false
 [[bench]]
 name = "check"
 harness = false
+
+[patch.crates-io]
+heapless = { git = "https://github.com/amy-kwan/heapless", rev = "a1313b45842e29693ad10c3998d043ef651e667c" }
 
 [lints.clippy]
 undocumented_unsafe_blocks = "warn"
